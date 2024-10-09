@@ -1,0 +1,158 @@
+Traceback (most recent call last):
+  File "/usr/share/miniconda3/envs/runenv/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/usr/share/miniconda3/envs/runenv/lib/python3.12/site-packages/nbclient/client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/share/miniconda3/envs/runenv/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/share/miniconda3/envs/runenv/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/usr/share/miniconda3/envs/runenv/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/usr/share/miniconda3/envs/runenv/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/share/miniconda3/envs/runenv/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from sympy.utilities.autowrap import ufuncify
+f = ufuncify([x], expr, backend='f2py') 
+
+t = np.linspace(0,4*np.pi,100)
+plt.plot(t, f(t));
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+File [0;32m/usr/share/miniconda3/envs/runenv/lib/python3.12/site-packages/sympy/core/cache.py:72[0m, in [0;36m__cacheit.<locals>.func_wrapper.<locals>.wrapper[0;34m(*args, **kwargs)[0m
+[1;32m     71[0m [38;5;28;01mtry[39;00m:
+[0;32m---> 72[0m     retval [38;5;241m=[39m [43mcfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m     73[0m [38;5;28;01mexcept[39;00m [38;5;167;01mTypeError[39;00m [38;5;28;01mas[39;00m e:
+
+[0;31mTypeError[0m: unhashable type: 'list'
+
+During handling of the above exception, another exception occurred:
+
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+File [0;32m/usr/share/miniconda3/envs/runenv/lib/python3.12/site-packages/sympy/core/cache.py:72[0m, in [0;36m__cacheit.<locals>.func_wrapper.<locals>.wrapper[0;34m(*args, **kwargs)[0m
+[1;32m     71[0m [38;5;28;01mtry[39;00m:
+[0;32m---> 72[0m     retval [38;5;241m=[39m [43mcfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m     73[0m [38;5;28;01mexcept[39;00m [38;5;167;01mTypeError[39;00m [38;5;28;01mas[39;00m e:
+
+[0;31mTypeError[0m: unhashable type: 'list'
+
+During handling of the above exception, another exception occurred:
+
+[0;31mCalledProcessError[0m                        Traceback (most recent call last)
+File [0;32m/usr/share/miniconda3/envs/runenv/lib/python3.12/site-packages/sympy/utilities/autowrap.py:182[0m, in [0;36mCodeWrapper._process_files[0;34m(self, routine)[0m
+[1;32m    181[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 182[0m     retoutput [38;5;241m=[39m [43mcheck_output[49m[43m([49m[43mcommand[49m[43m,[49m[43m [49m[43mstderr[49m[38;5;241;43m=[39;49m[43mSTDOUT[49m[43m)[49m
+[1;32m    183[0m [38;5;28;01mexcept[39;00m CalledProcessError [38;5;28;01mas[39;00m e:
+
+File [0;32m/usr/share/miniconda3/envs/runenv/lib/python3.12/subprocess.py:466[0m, in [0;36mcheck_output[0;34m(timeout, *popenargs, **kwargs)[0m
+[1;32m    464[0m     kwargs[[38;5;124m'[39m[38;5;124minput[39m[38;5;124m'[39m] [38;5;241m=[39m empty
+[0;32m--> 466[0m [38;5;28;01mreturn[39;00m [43mrun[49m[43m([49m[38;5;241;43m*[39;49m[43mpopenargs[49m[43m,[49m[43m [49m[43mstdout[49m[38;5;241;43m=[39;49m[43mPIPE[49m[43m,[49m[43m [49m[43mtimeout[49m[38;5;241;43m=[39;49m[43mtimeout[49m[43m,[49m[43m [49m[43mcheck[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m
+[1;32m    467[0m [43m           [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m[38;5;241m.[39mstdout
+
+File [0;32m/usr/share/miniconda3/envs/runenv/lib/python3.12/subprocess.py:571[0m, in [0;36mrun[0;34m(input, capture_output, timeout, check, *popenargs, **kwargs)[0m
+[1;32m    570[0m     [38;5;28;01mif[39;00m check [38;5;129;01mand[39;00m retcode:
+[0;32m--> 571[0m         [38;5;28;01mraise[39;00m CalledProcessError(retcode, process[38;5;241m.[39margs,
+[1;32m    572[0m                                  output[38;5;241m=[39mstdout, stderr[38;5;241m=[39mstderr)
+[1;32m    573[0m [38;5;28;01mreturn[39;00m CompletedProcess(process[38;5;241m.[39margs, retcode, stdout, stderr)
+
+[0;31mCalledProcessError[0m: Command '['/usr/share/miniconda3/envs/runenv/bin/python', '-c', 'import numpy.f2py as f2py2e;f2py2e.main()', '-c', '-m', 'wrapper_module_0', 'wrapped_code_0.f90']' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+[0;31mCodeWrapError[0m                             Traceback (most recent call last)
+Cell [0;32mIn[14], line 2[0m
+[1;32m      1[0m [38;5;28;01mfrom[39;00m [38;5;21;01msympy[39;00m[38;5;21;01m.[39;00m[38;5;21;01mutilities[39;00m[38;5;21;01m.[39;00m[38;5;21;01mautowrap[39;00m [38;5;28;01mimport[39;00m ufuncify
+[0;32m----> 2[0m f [38;5;241m=[39m [43mufuncify[49m[43m([49m[43m[[49m[43mx[49m[43m][49m[43m,[49m[43m [49m[43mexpr[49m[43m,[49m[43m [49m[43mbackend[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mf2py[39;49m[38;5;124;43m'[39;49m[43m)[49m 
+[1;32m      4[0m t [38;5;241m=[39m np[38;5;241m.[39mlinspace([38;5;241m0[39m,[38;5;241m4[39m[38;5;241m*[39mnp[38;5;241m.[39mpi,[38;5;241m100[39m)
+[1;32m      5[0m plt[38;5;241m.[39mplot(t, f(t));
+
+File [0;32m/usr/share/miniconda3/envs/runenv/lib/python3.12/site-packages/sympy/core/cache.py:76[0m, in [0;36m__cacheit.<locals>.func_wrapper.<locals>.wrapper[0;34m(*args, **kwargs)[0m
+[1;32m     74[0m     [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m e[38;5;241m.[39margs [38;5;129;01mor[39;00m [38;5;129;01mnot[39;00m e[38;5;241m.[39margs[[38;5;241m0[39m][38;5;241m.[39mstartswith([38;5;124m'[39m[38;5;124munhashable type:[39m[38;5;124m'[39m):
+[1;32m     75[0m         [38;5;28;01mraise[39;00m
+[0;32m---> 76[0m     retval [38;5;241m=[39m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m     77[0m [38;5;28;01mreturn[39;00m retval
+
+File [0;32m/usr/share/miniconda3/envs/runenv/lib/python3.12/site-packages/sympy/utilities/autowrap.py:1132[0m, in [0;36mufuncify[0;34m(args, expr, language, backend, tempdir, flags, verbose, helpers, **kwargs)[0m
+[1;32m   1130[0m args [38;5;241m=[39m [y] [38;5;241m+[39m indexed_args [38;5;241m+[39m [m]
+[1;32m   1131[0m args_with_indices [38;5;241m=[39m [a[i] [38;5;28;01mfor[39;00m a [38;5;129;01min[39;00m indexed_args]
+[0;32m-> 1132[0m [38;5;28;01mreturn[39;00m [43mautowrap[49m[43m([49m[43mEq[49m[43m([49m[43my[49m[43m[[49m[43mi[49m[43m][49m[43m,[49m[43m [49m[43mf[49m[43m([49m[38;5;241;43m*[39;49m[43margs_with_indices[49m[43m)[49m[43m)[49m[43m,[49m[43m [49m[43mlanguage[49m[43m,[49m[43m [49m[43mbackend[49m[43m,[49m
+[1;32m   1133[0m [43m                [49m[43mtempdir[49m[43m,[49m[43m [49m[43margs[49m[43m,[49m[43m [49m[43mflags[49m[43m,[49m[43m [49m[43mverbose[49m[43m,[49m[43m [49m[43mhelpers[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m/usr/share/miniconda3/envs/runenv/lib/python3.12/site-packages/sympy/core/cache.py:76[0m, in [0;36m__cacheit.<locals>.func_wrapper.<locals>.wrapper[0;34m(*args, **kwargs)[0m
+[1;32m     74[0m     [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m e[38;5;241m.[39margs [38;5;129;01mor[39;00m [38;5;129;01mnot[39;00m e[38;5;241m.[39margs[[38;5;241m0[39m][38;5;241m.[39mstartswith([38;5;124m'[39m[38;5;124munhashable type:[39m[38;5;124m'[39m):
+[1;32m     75[0m         [38;5;28;01mraise[39;00m
+[0;32m---> 76[0m     retval [38;5;241m=[39m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m     77[0m [38;5;28;01mreturn[39;00m retval
+
+File [0;32m/usr/share/miniconda3/envs/runenv/lib/python3.12/site-packages/sympy/utilities/autowrap.py:659[0m, in [0;36mautowrap[0;34m(expr, language, backend, tempdir, args, flags, verbose, helpers, code_gen, **kwargs)[0m
+[1;32m    656[0m         new_args[38;5;241m.[39mappend(missing[38;5;241m.[39mname)
+[1;32m    657[0m     routine [38;5;241m=[39m code_gen[38;5;241m.[39mroutine([38;5;124m'[39m[38;5;124mautofunc[39m[38;5;124m'[39m, expr, args [38;5;241m+[39m new_args)
+[0;32m--> 659[0m [38;5;28;01mreturn[39;00m [43mcode_wrapper[49m[38;5;241;43m.[39;49m[43mwrap_code[49m[43m([49m[43mroutine[49m[43m,[49m[43m [49m[43mhelpers[49m[38;5;241;43m=[39;49m[43mhelps[49m[43m)[49m
+
+File [0;32m/usr/share/miniconda3/envs/runenv/lib/python3.12/site-packages/sympy/utilities/autowrap.py:163[0m, in [0;36mCodeWrapper.wrap_code[0;34m(self, routine, helpers)[0m
+[1;32m    161[0m     [38;5;28mself[39m[38;5;241m.[39m_generate_code(routine, helpers)
+[1;32m    162[0m     [38;5;28mself[39m[38;5;241m.[39m_prepare_files(routine)
+[0;32m--> 163[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_process_files[49m[43m([49m[43mroutine[49m[43m)[49m
+[1;32m    164[0m     mod [38;5;241m=[39m [38;5;28m__import__[39m([38;5;28mself[39m[38;5;241m.[39mmodule_name)
+[1;32m    165[0m [38;5;28;01mfinally[39;00m:
+
+File [0;32m/usr/share/miniconda3/envs/runenv/lib/python3.12/site-packages/sympy/utilities/autowrap.py:184[0m, in [0;36mCodeWrapper._process_files[0;34m(self, routine)[0m
+[1;32m    182[0m     retoutput [38;5;241m=[39m check_output(command, stderr[38;5;241m=[39mSTDOUT)
+[1;32m    183[0m [38;5;28;01mexcept[39;00m CalledProcessError [38;5;28;01mas[39;00m e:
+[0;32m--> 184[0m     [38;5;28;01mraise[39;00m CodeWrapError(
+[1;32m    185[0m         [38;5;124m"[39m[38;5;124mError while executing command: [39m[38;5;132;01m%s[39;00m[38;5;124m. Command output is:[39m[38;5;130;01m\n[39;00m[38;5;132;01m%s[39;00m[38;5;124m"[39m [38;5;241m%[39m (
+[1;32m    186[0m             [38;5;124m"[39m[38;5;124m [39m[38;5;124m"[39m[38;5;241m.[39mjoin(command), e[38;5;241m.[39moutput[38;5;241m.[39mdecode([38;5;124m'[39m[38;5;124mutf-8[39m[38;5;124m'[39m)))
+[1;32m    187[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28mself[39m[38;5;241m.[39mquiet:
+[1;32m    188[0m     [38;5;28mprint[39m(retoutput)
+
+[0;31mCodeWrapError[0m: Error while executing command: /usr/share/miniconda3/envs/runenv/bin/python -c import numpy.f2py as f2py2e;f2py2e.main() -c -m wrapper_module_0 wrapped_code_0.f90. Command output is:
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/usr/share/miniconda3/envs/runenv/lib/python3.12/site-packages/numpy/f2py/f2py2e.py", line 770, in main
+    run_compile()
+  File "/usr/share/miniconda3/envs/runenv/lib/python3.12/site-packages/numpy/f2py/f2py2e.py", line 742, in run_compile
+    builder.compile()
+  File "/usr/share/miniconda3/envs/runenv/lib/python3.12/site-packages/numpy/f2py/_backends/_meson.py", line 193, in compile
+    self.run_meson(self.build_dir)
+  File "/usr/share/miniconda3/envs/runenv/lib/python3.12/site-packages/numpy/f2py/_backends/_meson.py", line 186, in run_meson
+    self._run_subprocess_command(setup_command, build_dir)
+  File "/usr/share/miniconda3/envs/runenv/lib/python3.12/site-packages/numpy/f2py/_backends/_meson.py", line 182, in _run_subprocess_command
+    subprocess.run(command, cwd=cwd, check=True)
+  File "/usr/share/miniconda3/envs/runenv/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/share/miniconda3/envs/runenv/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/share/miniconda3/envs/runenv/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'meson'
+Cannot use distutils backend with Python>=3.12, using meson backend instead.
+Using meson backend
+Will pass --lower to f2py
+See https://numpy.org/doc/stable/f2py/buildtools/meson.html
+Reading fortran codes...
+	Reading file 'wrapped_code_0.f90' (format:free)
+Post-processing...
+	Block: wrapper_module_0
+			Block: autofunc
+Applying post-processing hooks...
+  character_backward_compatibility_hook
+Post-processing (stage 2)...
+Building modules...
+    Building module "wrapper_module_0"...
+    Generating possibly empty wrappers"
+    Maybe empty "wrapper_module_0-f2pywrappers.f"
+        Constructing wrapper function "autofunc"...
+          y_4176474 = autofunc(x_4176478,[m_4176475])
+    Wrote C/API module "wrapper_module_0" to file "./wrapper_module_0module.c"
+
+
